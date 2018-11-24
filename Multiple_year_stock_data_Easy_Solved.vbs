@@ -25,18 +25,18 @@ For Each ws In ThisWorkbook.Worksheets
 '    Find the last non-blank cell in row 1
     lCol = Cells(1, Columns.Count).End(xlToLeft).Column
 
-    For i = 2 To lRow
+    For i = 2 To lRow                           'When is different, sum column 10 + 7, and correct ticker name'
                 If ws.Cells(i + 1, 1).Value <> ws.Cells(i, 1).Value Then
                     ws.Cells(CountRow + 1, 10) = ws.Cells(CountRow + 1, 10).Value + ws.Cells(i, 7).Value
                     ws.Cells(CountRow + 1, 9) = ws.Cells(i, 1).Value
                     CountRow = 1 + CountRow
-                Else                            'Son iguales, se suma la columna 12 con la 7
+                Else                            'This is the sum of column 10 + column 7
                     ws.Cells(CountRow + 1, 10) = ws.Cells(CountRow + 1, 10).Value + ws.Cells(i, 7).Value
                     ws.Cells(CountRow + 1, 9) = ws.Cells(i, 1).Value
                 End If
     Next i
 
-ws.Range("I:N").Columns.AutoFit
+ws.Range("I:N").Columns.AutoFit                 'To format a couple of columns'
 
 Next
 
